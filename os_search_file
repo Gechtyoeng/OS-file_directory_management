@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+#funtion to display the usage of the script
+usage(){
+	echo "Usage: $0 -d <directory> -n <filename> | -e <extension>"
+	echo "Example: $0 -d /home/user/Document -n test.txt"
+	echo "Example: $0 -d /home/user/Document -e .txt"
+	exit 1
+}
+
+#check if no argument were pass
+if [[ $# -eq 0 ]]; then
+	usage
+fi
+
+#initialize variables
+DIRECTORY=""
+FILENAME=""
+EXTENSION=""
+
+#pase command to each variables
+while getopts "d:n:e:" opt; do
+	case "$opt" in
+		d) DIRECTORY="$OPTARG";;
+		n) FILENAME="$OPTARG";;
+		e) EXTENSION="$OPTARG";;
+		*) usage;;
+	esac
+done
+
+#check if the directory is empty or invalid directory
+if [[ -z "$DIRECTORY" ]]; then
+	echo "empty directory"
+	exit 1
+elif [[ ! -d "$DIRECTORY" ]]; then
+	echo "Invalid directory"
+	exit 1 
+fi
+
+#perform seach file
+if [[ -n "$FILENAME" ]]; then
+	echo "perform search file by name"
+	find "$DIRECTORY" -type f -name "$FILENAME"
+elif [[ -n "$EXTENSION" ]]; then
+	echo "perform search file by extension"
+	find "$DIRECTORY" -type f -name "*$EXTENSION"
+else
+	echo "EORRO: you must provide filename or extension"
+	usage
+fi
