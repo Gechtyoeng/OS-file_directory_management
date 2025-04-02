@@ -2,7 +2,7 @@
 # Include the functions
 source list_details.sh
 source backup_file.sh
-source OS_count_files.sh
+source os_count_files.sh
 source disk_usage.sh
 source os_search_file.sh
 source compress_file.sh
