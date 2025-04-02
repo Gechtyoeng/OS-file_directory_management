@@ -23,7 +23,7 @@ while true; do
         2) backup_files ;;
         3) count_files ;;
         4) display_ disk_usage ;;
-        5) search_files ;;
+        5) search_file ;;
         6) compress_files ;;
         7) exit 0 ;;
         *) echo "Invalid option. Please try again." ;;
