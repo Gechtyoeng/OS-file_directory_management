@@ -1,0 +1,28 @@
+#!/bin/bash
+
+source log.sh
+
+# Function to count files in a directory
+count_files() {
+	# Ask user for the directory
+	echo "Enter the directory path to count files:"
+	read dir
+	
+	# Check if the directory exists
+	if [ ! -d "$dir" ]; then
+		echo "Error: Directory does not exist."
+		log_action "Counted files in $dir"
+		return
+	fi
+
+
+	#count the number of files in the directory
+	file_count=$(find "$dir" -type f | wc -l)
+
+	# Output the result
+	echo "The number of files in '$dir' is: $file_count"
+	log_action "Counted files in $dir"
+}
+
+#  Call the function
+count_files
