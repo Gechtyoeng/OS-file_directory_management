@@ -1,31 +1,33 @@
 #!/bin/bash
 
-read -p "Enter directory: " dir
-read -p "Enter filename or extension: " name
-
-# Check if the directory exists if not exit
-if [[ ! -d "$dir" ]]; then
-    echo "Directory does not exist"
-    exit 1
-fi
-
-# Handle different input types
-if [[ "$name" == .* ]]; then
-    search_pattern="*$name"  # Keep dot for extensions
-elif [[ "$name" == *.* ]]; then
-    search_pattern="$name"  # Exact filename search
-else
-    search_pattern="*.$name"  #extension if no dot
-fi
-
-# Perform the search
-result=$(find "$dir" -type f -name "$search_pattern")
-
-if [[ -z "$result" ]]; then
-    echo "No files found matching '$name' in $dir"
-    log_action "No files found for '$name' in $dir"
-else
-    echo "$result"
-    log_action"Searched for '$name' in $dir"
-fi
-
+source log.sh
+search_file() {
+    read -p "Enter directory: " dir
+    read -p "Enter filename or extension: " name
+    
+    # Check if the directory exists if not exit
+    if [[ ! -d "$dir" ]]; then
+        echo "Directory does not exist"
+        exit 1
+    fi
+    
+    # Handle different input types
+    if [[ "$name" == .* ]]; then
+        search_pattern="*$name"  # Keep dot for extensions
+    elif [[ "$name" == *.* ]]; then
+        search_pattern="$name"  # Exact filename search
+    else
+        search_pattern="*.$name"  #extension if no dot
+    fi
+    
+    # Perform the search
+    result=$(find "$dir" -type f -name "$search_pattern")
+    
+    if [[ -z "$result" ]]; then
+        echo "No files found matching '$name' in $dir"
+        log_action "No files found for '$name' in $dir"
+    else
+        echo "$result"
+        log_action "Searched for '$name' in $dir"
+    fi
+}
