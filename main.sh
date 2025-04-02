@@ -1,18 +1,31 @@
 #!/bin/bash
-# Source function scripts
+# Include the functions
 source list_details.sh
+source backup_file.sh
+source OS_count_files.sh
+source disk_usage.sh
+source os_search_file.sh
 source compress_file.sh
+source log.sh
 # Main menu
 while true; do
-    echo "File and Directory Management Program"
+    echo "Select an option:"
     echo "1. List files and sub-directories"
-    echo "2. Compress files"
-    echo "3. Exit"
-    read -p "Choose an option: " option
-    case $option in
+    echo "2. Create backups"
+    echo "3. Count number of files"
+    echo "4. Display disk usage"
+    echo "5. Search for a file"
+    echo "6. Compress files or directories"
+    echo "7. Exit"
+    read -p "Enter your choice: " choice
+    case $choice in
         1) list_files ;;
-         2) compress_files ;;
-        3) exit 0 ;;
-        *) echo "Invalid option" ;;
+        2) backup_files ;;
+        3) count_files ;;
+        4) display_ disk_usage ;;
+        5) search_files ;;
+        6) compress_files ;;
+        7) exit 0 ;;
+        *) echo "Invalid option. Please try again." ;;
     esac
 done
