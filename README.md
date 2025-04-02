@@ -27,14 +27,17 @@ This bash program provides various file and directory management features includ
 1. Clone the repository:
    ```bash
    git clone <repository_url>
+   ```
+2. Navigate to directory
+   ```bash
    cd <repository_directory>
    ```
-2. Usage
-  - Make sure the script files are executable:
+## Usage
+  1. Make sure the script files are executable:
    ```bash
    chmod +x *.sh
    ```
-   - Run the main script:
+   2. Run the main script:
    ```bash
    ./main.sh
    ```
