@@ -31,10 +31,10 @@ This bash program provides various file and directory management features includ
    ```
 2. Usage
   - Make sure the script files are executable:
-   ``bash
+   ```bash
    chmod +x *.sh
    ```
    - Run the main script:
-    ``bash
+   ```bash
    ./main.sh
    ```
