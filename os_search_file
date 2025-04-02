@@ -1,50 +1,49 @@
-#!/usr/bin/env bash
+#!/bin/bash
+#add the source from log.sh
+source log.sh
 
-#funtion to display the usage of the script
-usage(){
-	echo "Usage: $0 -d <directory> -n <filename> | -e <extension>"
-	echo "Example: $0 -d /home/user/Document -n test.txt"
-	echo "Example: $0 -d /home/user/Document -e .txt"
-	exit 1
+# Function to perform search file by name or extension
+search_file() {
+
+    # Initialize variables
+    DIRECTORY=""
+    FILENAME=""
+    EXTENSION=""
+
+    # Parse command-line options
+    while getopts "d:n:e:" opt; do
+        case "$opt" in
+            d) DIRECTORY="$OPTARG";;
+            n) FILENAME="$OPTARG";;
+            e) EXTENSION="$OPTARG";;
+            *) echo "Invalid option"; exit 1;;
+        esac
+    done
+
+    # Check if the directory exists
+    if [ ! -d "$DIRECTORY" ]; then
+        echo "ERROR: Invalid directory: $DIRECTORY"
+        log_action "ERROR: Invalid directory: $DIRECTORY"
+        exit 1
+    fi
+
+    # Search file by name if provided
+    if [ -n "$FILENAME" ]; then
+        log_action "Searching for file by name: $FILENAME in $DIRECTORY"
+        find "$DIRECTORY" -type f -name "$FILENAME"
+
+    # Search files by extension if provided
+    elif [ -n "$EXTENSION" ]; then
+        log_action "Searching for files with extension .$EXTENSION in $DIRECTORY"
+        find "$DIRECTORY" -type f -name "*.$EXTENSION"
+
+    else
+        # If no filename or extension is provided, output an error
+        echo "ERROR: You must provide either a filename or an extension."
+        log_action "ERROR: No filename or extension provided."
+        exit 1
+    fi
 }
+# Call the function with arguments passed to the script
+search_file "$@"
 
-#check if no argument were pass
-if [[ $# -eq 0 ]]; then
-	usage
-fi
-
-#initialize variables
-DIRECTORY=""
-FILENAME=""
-EXTENSION=""
-
-#pase command to each variables
-while getopts "d:n:e:" opt; do
-	case "$opt" in
-		d) DIRECTORY="$OPTARG";;
-		n) FILENAME="$OPTARG";;
-		e) EXTENSION="$OPTARG";;
-		*) usage;;
-	esac
-done
-
-#check if the directory is empty or invalid directory
-if [[ -z "$DIRECTORY" ]]; then
-	echo "empty directory"
-	exit 1
-elif [[ ! -d "$DIRECTORY" ]]; then
-	echo "Invalid directory"
-	exit 1 
-fi
-
-#perform seach file
-if [[ -n "$FILENAME" ]]; then
-	echo "perform search file by name"
-	find "$DIRECTORY" -type f -name "$FILENAME"
-elif [[ -n "$EXTENSION" ]]; then
-	echo "perform search file by extension"
-	find "$DIRECTORY" -type f -name "*$EXTENSION"
-else
-	echo "EORRO: you must provide filename or extension"
-	usage
-fi
