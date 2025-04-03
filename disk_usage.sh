@@ -20,6 +20,3 @@ display_disk_usage() {
 		log_action "Error: Directory $dir does not exist!"
 	fi
 }
-
-#Call the function automatically when the script run
-display_disk_usage

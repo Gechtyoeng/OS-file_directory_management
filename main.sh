@@ -2,9 +2,9 @@
 # Include the functions
 source list_details.sh
 source backup_file.sh
-source os_count_files.sh
+source os_count_files
 source disk_usage.sh
-source os_search_file.sh
+source os_search_file
 source compress_file.sh
 source log.sh
 # Main menu
@@ -22,7 +22,7 @@ while true; do
         1) list_files ;;
         2) backup_files ;;
         3) count_files ;;
-        4) display_ disk_usage ;;
+        4) display_disk_usage ;;
         5) search_file ;;
         6) compress_files ;;
         7) exit 0 ;;

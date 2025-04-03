@@ -39,3 +39,53 @@ Tue Apr  1 09:46:30 PM +07 2025: Compressed /home/veysean/logs to /home/veysean/
 2025-04-02 23:29:42 - 
 2025-04-02 23:30:18 - Checked disk usage of /home/chanaliza-in/OS-file_directory_management
 >>>>>>> origin/main
+2025-04-03 08:29:35 - 
+2025-04-03 08:29:35 - 
+2025-04-03 08:29:55 - 
+2025-04-03 08:29:55 - 
+2025-04-03 08:34:22 - 
+2025-04-03 08:34:22 - 
+2025-04-03 08:34:22 - 
+2025-04-03 08:36:59 - 
+2025-04-03 08:36:59 - 
+2025-04-03 08:36:59 - 
+2025-04-03 08:36:59 - 
+2025-04-03 08:36:59 - 
+2025-04-03 08:38:45 - SUCCESS: Backed up '/home/veysean/logs' to '/home/veysean'.
+2025-04-03 08:39:43 - SUCCESS: Backed up '/home/veysean/logs' to '/home/veysean/Python'.
+2025-04-03 08:57:15 - 
+2025-04-03 08:57:15 - 
+2025-04-03 08:57:15 - 
+2025-04-03 08:57:15 - 
+2025-04-03 08:57:15 - 
+2025-04-03 08:58:15 - Backup of /home/veysean/Shell_script created at /home/veysean/Python
+2025-04-03 08:58:41 - Backup of /home/veysean/Python created at /home/veysean/Python
+2025-04-03 08:59:04 - Failed to backup /home/veysean/Python - destination directory does not exist
+2025-04-03 09:00:31 - 
+2025-04-03 09:00:31 - 
+2025-04-03 09:00:31 - 
+2025-04-03 09:00:31 - 
+2025-04-03 09:00:31 - 
+2025-04-03 09:00:31 - 
+2025-04-03 09:00:31 - 
+2025-04-03 09:00:45 - Counted files in /home/veysean/Python
+2025-04-03 09:01:59 - 
+2025-04-03 09:01:59 - 
+2025-04-03 09:01:59 - 
+2025-04-03 09:01:59 - 
+2025-04-03 09:01:59 - 
+2025-04-03 09:01:59 - 
+2025-04-03 09:01:59 - 
+2025-04-03 09:02:07 - Counted files in /home/veysean/Python
+2025-04-03 09:03:11 - 
+2025-04-03 09:03:11 - 
+2025-04-03 09:03:11 - 
+2025-04-03 09:03:11 - 
+2025-04-03 09:03:11 - 
+2025-04-03 09:03:11 - 
+2025-04-03 09:03:11 - 
+2025-04-03 09:03:21 - Checked disk usage of /home/veysean/Python
+2025-04-03 09:03:54 - No files found for 'test.txt' in /home/veysean/Python
+2025-04-03 09:04:13 - Searched for '.txt' in /home/veysean/Python
+2025-04-03 09:04:38 - Searched for '.py' in /home/veysean/Python
+2025-04-03 09:05:10 - Compressed /home/veysean/Python to /home/veysean/Python/final_test.tar.gz

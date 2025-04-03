@@ -5,7 +5,7 @@ source log.sh
 # Function to count files in a directory
 count_files() {
 	# Ask user for the directory
-	echo "Enter the directory path to count files:"
+	echo -n "Enter the directory path to count files:"
 	read dir
 	
 	# Check if the directory exists
@@ -24,5 +24,3 @@ count_files() {
 	log_action "Counted files in $dir"
 }
 
-#  Call the function
-count_files
