@@ -1,49 +1,33 @@
 #!/bin/bash
-#add the source from log.sh
+
 source log.sh
-
-# Function to perform search file by name or extension
 search_file() {
-
-    # Initialize variables
-    DIRECTORY=""
-    FILENAME=""
-    EXTENSION=""
-
-    # Parse command-line options
-    while getopts "d:n:e:" opt; do
-        case "$opt" in
-            d) DIRECTORY="$OPTARG";;
-            n) FILENAME="$OPTARG";;
-            e) EXTENSION="$OPTARG";;
-            *) echo "Invalid option"; exit 1;;
-        esac
-    done
-
-    # Check if the directory exists
-    if [ ! -d "$DIRECTORY" ]; then
-        echo "ERROR: Invalid directory: $DIRECTORY"
-        log_action "ERROR: Invalid directory: $DIRECTORY"
+    read -p "Enter directory: " dir
+    read -p "Enter filename or extension: " name
+    
+    # Check if the directory exists if not exit
+    if [[ ! -d "$dir" ]]; then
+        echo "Directory does not exist"
         exit 1
     fi
-
-    # Search file by name if provided
-    if [ -n "$FILENAME" ]; then
-        log_action "Searching for file by name: $FILENAME in $DIRECTORY"
-        find "$DIRECTORY" -type f -name "$FILENAME"
-
-    # Search files by extension if provided
-    elif [ -n "$EXTENSION" ]; then
-        log_action "Searching for files with extension .$EXTENSION in $DIRECTORY"
-        find "$DIRECTORY" -type f -name "*.$EXTENSION"
-
+    
+    # Handle different input types
+    if [[ "$name" == .* ]]; then
+        search_pattern="*$name"  # Keep dot for extensions
+    elif [[ "$name" == *.* ]]; then
+        search_pattern="$name"  # Exact filename search
     else
-        # If no filename or extension is provided, output an error
-        echo "ERROR: You must provide either a filename or an extension."
-        log_action "ERROR: No filename or extension provided."
-        exit 1
+        search_pattern="*.$name"  #extension if no dot
+    fi
+    
+    # Perform the search
+    result=$(find "$dir" -type f -name "$search_pattern")
+    
+    if [[ -z "$result" ]]; then
+        echo "No files found matching '$name' in $dir"
+        log_action "No files found for '$name' in $dir"
+    else
+        echo "$result"
+        log_action "Searched for '$name' in $dir"
     fi
 }
-# Call the function with arguments passed to the script
-search_file "$@"
-
